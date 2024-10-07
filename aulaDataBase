@@ -1,0 +1,86 @@
+create database aula;
+
+show databases;
+ use aula;
+
+create table medico(
+ codMed int primary key,medicopacientemedicopaciente
+ nomeMed varchar(40) not null, 
+ dataNasc date not null,
+ cpf char(11), 
+ cidade varchar(30) not null,
+ especialidade varchar(50) not null);
+ 
+ create table paciente(
+ codPac int primary key,
+ nomePac varchar(40) not null, 
+ dataNasc date not null,
+ cpf char(11), 
+ cidade varchar(30) not null);
+ 
+show databases;
+create table consulta(
+codMed int not null,
+codPac int not null,
+data_consulta date not null,
+hora time not null,
+primary key(codMed, codpac),
+foreign key(codMed) references medico(codMed),
+foreign key(codPac) references paciente(codPac)
+
+);
+
+/*Nova base de dados*/
+  
+create database Universidade;
+
+show databases;
+use Universidade;
+
+create table Professor(
+codProf int primary key,
+nomeProf varchar(40) not null, 
+areaProf varchar(40) not null,
+CPF char(11),
+dataNasc date not null
+);
+
+
+create table Disciplina(
+codDisc int primary key,
+nomeDisc varchar(40) not null,
+CH char(10) not null
+); 
+
+create table ministra(
+codProf int not null,
+codDisc int not null,
+primary key (codProf,codDisc),
+foreign key(codProf) references Professor(codProf),
+foreign key(codDisc) references Disciplina(codDisc) 
+);
+
+/*Criando uma base de dados teste*/
+
+create database Teste;
+show databases;
+use Teste;														/*drop database apaga a base de dados inteira CUIDADO AO USAR
+																  drop table apaga a tabela									*/
+create table Cliente(
+codCli int primary key,
+nome varchar(40) not null,
+endereco varchar(40) not null,
+dataNasc date not null
+);
+
+CREATE TABLE Produto (
+    codProd INT PRIMARY KEY,
+    nome VARCHAR(30) NOT NULL,
+    valor FLOAT NOT NULL
+);
+
+use Universidade;
+alter table Professor add formacao varchar(30);    /*Add novo campo*/
+alter table Discipliementana add ementa  varchar(100);
+
+
