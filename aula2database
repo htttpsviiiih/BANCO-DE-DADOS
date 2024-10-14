@@ -1,0 +1,47 @@
+show databases;
+use aula;
+
+insert into medico values(1, 'Paulo','1988-10-10', '45236812569','Foz do Iguaçu', 'Pediatra');
+insert into medico values(2, 'Marina','1990-9-05', '25871688458','Londrina', 'Neuro');
+insert into medico values(3, 'Kauãn','1990-07-10', '15241258963','Curitiba', 'Traumatologia');
+insert into medico values(4, 'Mya','2000-12-30', '45213698702','Xique-Xique', 'Geral');
+insert into medico values(5, 'Geraldine','1999-01-22', '09020811959','Brasilia', 'Dermatologia');
+insert into medico values(6, 'Maria','1980-02-28', '52698745236','Bombinhas', 'Geriatria');
+
+delete from medico where codmed =1;/*Deleta dados da tabela*/
+select * from medico; /*Ver os dados da tabela */;
+
+insert into paciente values(1, 'Jefferson','1988-10-10', '01230258930','Foz do Iguaçu');
+insert into paciente values(2, 'Daniel','1990-9-05', '02056398402','Londrina');
+insert into paciente values(3, 'Erica','1990-07-10', '02365203289','Curitiba');
+insert into paciente values(4, 'Ana Carla','2000-12-30', '56398742150','Xique-Xique');
+insert into paciente values(5, 'Leonir','1999-01-22', '02365201458','Brasilia');
+insert into paciente values(6, 'Marcelo','1980-02-28', '02563202874','Bombinhas');
+delete from paciente where codpac = 01;/*Deleta dados da tabela*/
+select * from paciente; /*Ver os dados da tabela */;
+
+DELETE FROM paciente WHERE codpac = 1;
+
+select * from consulta; /*Ver os dados da tabela */;
+
+insert into consulta values(1, 1,'2024-12-10','14:50');
+insert into consulta values(2, 2,'2024-10-10','10:35');
+insert into consulta values(3, 3,'2024-11-10','11:52');
+insert into consulta values(3, 4,'2024-09-10','20:55');
+insert into consulta values(4, 5,'2024-07-10','22:50');
+insert into consulta values(5, 6,'2024-01-10','10:10');
+insert into consulta values(6, 6,'2025-10-10','15:45');
+insert into consulta values(1, 5,'2025-12-10','12:00');
+insert into consulta values(2, 4,'2025-05-10','10:50');
+insert into consulta values(3, 3,'2025-02-10','13:30');
+insert into consulta values(4, 2,'2025-03-10','20:54');
+insert into consulta values(5, 1,'2025-06-10','12:50');
+
+DELETE FROM consulta WHERE codpac = 1;
+
+
+
+
+
+
+nessa aula aprendemos a add dados nas colunas na tabela, mostrar eles e deletar depois
