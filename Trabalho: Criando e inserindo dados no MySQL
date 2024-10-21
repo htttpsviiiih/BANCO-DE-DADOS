@@ -1,0 +1,130 @@
+create database Locadora;
+show databases;
+use Locadora;
+
+Create table Ator(
+	CodAtor int primary key,
+    NomeArtistico varchar(40) not null,
+    NomeReal varchar(40) not null,
+    Nacionalidade varchar(20) not null,
+    Sexo char(1) not null,
+    Idade int not null,
+    IndicacaoOscar int,
+    Oscar int
+);
+-- drop table Ator;
+
+Create table Filme(
+	CodFilme int primary key,
+    NomeFilme varchar(40) not null,
+    AnoFilme int not null,
+    Orcamento int not null,
+    Tempo int not null
+);
+Create table Personagem(
+	CodFilme int,
+    CodAtor int,
+    Personagem varchar(40) not null,
+	cach int not null,
+    primary key(CodFilme,CodAtor),
+    foreign key (CodFilme) references Filme(CodFilme),
+    foreign key (CodAtor) references Ator(CodAtor)
+    
+);
+
+
+insert into Ator values(1, 'Demi Moore', 'Maria da Silva', 'USA', 'F', 32, 0, 0);
+insert into Ator values(2, 'William Hurt', 'William Ernst Hurt', 'USA', 'M', 45, 2, 1);
+insert into Ator values(3, 'George Clooney', 'George Costa Smith', 'USA', 'M', 37, 1, 1);
+insert into Ator values(4, 'Jennifer Lopez', 'Maria Conchita Lopez', 'México', 'F', 32, 0, 0);
+insert into Ator values(5, 'Antony Hopkins', 'Antony Richard Hopcroft', 'USA', 'M', 65, 6, 3);
+insert into Ator values(6, 'Antônio Banderas', 'Antônio Augusto Banderas', 'Espanha', 'M', 34, 1, 0);
+insert into Ator values(7, 'Tom Hanks', 'Antony Hanks', 'USA', 'M', 45, 1, 1);
+insert into Ator values(8, 'Matt Damon', 'Mattew Louis Damon', 'USA', 'M', 32, 1, 1);
+insert into Ator values(9, 'Jim Carrey', 'James Carrey', 'USA', 'M', 40, 0, 0);
+insert into Ator values(10, 'Nicole Kidman', 'Susan West', 'Austrália', 'F', 34, 3, 1);
+insert into Ator values(11, 'Val Kilmer', 'Valerio Soza Kilmer', 'Porto Rico', 'M', 40, 1, 0);
+insert into Ator values(12, 'Brad Pitt', 'João Paulo', 'USA', 'M', 28, 1, 0);
+insert into Ator values(13, 'Cameron Diaz', 'Esperanza Diaz', 'Costa Rica', 'F', 29, 0, 0);
+insert into Ator values(14, 'Holly Hunter', 'Susan Richards', 'USA', 'F', 33, 1, 1);
+insert into Ator values(15, 'Richard Gere', 'Richard Gere', 'USA', 'M', 47, 0, 0);
+insert into Ator values(16, 'Jessica Lange', 'Jessica Lange', 'USA', 'F', 42, 4, 2);
+insert into Ator values(17, 'Dustin Hoffman', 'Dustin Hoffman', 'USA', 'M', 41, 2, 1);
+insert into Ator values(18, 'Sônia Braga', 'Sônia Braga', 'Brasil', 'F', 35, 0, 0);
+insert into Ator values(19, 'Samuel Jackson', 'Samuel L. Jackson', 'USA', 'M', 45, 0, 0);
+insert into Ator values(20, 'Sandra Bullock', 'Sandra Bullock', 'USA', 'F', 34, 1, 0);
+insert into Ator values(21, 'Harry Cornick Jr.', 'Harry Cornick Jr.', 'USA', 'M', 31, 1, 1);
+insert into Ator values(22, 'Wesley Snipes', 'Wesley Snipes', 'USA', 'M', 31, 1, 0);
+
+select * from Ator;
+
+insert into Filme values(1, 'A Jurada', 1996, 1000000, 18);
+insert into Filme values(2, 'Cidade das Sombras', 1997, 10000000, 7);
+insert into Filme values(3, 'Irresistível Paixão', 1997, 10000000, 10);
+insert into Filme values(4, 'A Máscara do Zorro', 1998, 11000000, 11);
+insert into Filme values(5, 'Quem vai ficar com Marry ?', 1998, 10000000, 8);
+insert into Filme values(6, 'O Resgate do Soldado Ryan', 1997, 10000000, 14);
+insert into Filme values(7, 'Batman, o Filme', 1995, 10000000, 9);
+insert into Filme values(8, 'Filadélfia', 1995, 10000000, 14);
+insert into Filme values(9, 'O Máscara', 1996, 10000000, 10);
+insert into Filme values(10, 'O Beijo da Mulher Aranha', 1999, 80000000, 24);
+insert into Filme values(11, 'A Letra Escarlate', 1996, 10000000, 15);
+insert into Filme values(12, 'O Pacificador', 1998, 10000000, 15);
+insert into Filme values(13, 'Ace Ventura', 1995, 10000000, 10);
+insert into Filme values(14, 'Chaplin', 1995, 10000000, 10);
+insert into Filme values(15, 'Batman e Robin', 1997, 10000000, 14);
+insert into Filme values(16, 'Strip Tease', 1996, 10000000, 12);
+insert into Filme values(17, 'Passageiro 57', 1995, 10000000, 15);
+insert into Filme values(18, 'Forrest Gump', 1998, 15000000, 15);
+insert into Filme values(19, 'Seven', 1995, 15000000, 12);
+insert into Filme values(20, 'Tootsie', 1998, 10000000, 15);
+insert into Filme values(21, 'Tieta', 1984, 1000000, 15);
+insert into Filme values(22, 'Código de Violência', 1997, 10000000, 9);
+insert into Filme values(23, 'Quando o Amor Acontece', 1998, 10000000, 9);
+insert into Filme values(24, 'A Vingança de Bette', 1998, 10000000, 9);
+insert into Filme values(25, 'Blade, o Caçador de Vampiros', 1998, 10000000, 18);
+
+select * from Filme;
+
+insert into Personagem values(1, 1, 'Mary', 30000);
+insert into Personagem values(10, 10, 'Columbo', 3000000);
+insert into Personagem values(11, 11, 'Johnny', 8000000);
+insert into Personagem values(11, 12, 'Holly', 1000000);
+insert into Personagem values(12, 14, 'Pancho', 8000000);
+insert into Personagem values(13, 16, 'Roger', 4000000);
+insert into Personagem values(13, 20, 'Mary', 5000000);
+insert into Personagem values(14, 15, 'Roberts', 1000000);
+insert into Personagem values(14, 16, 'Edward', 2000000);
+insert into Personagem values(15, 17, 'Truman', 12000000);
+insert into Personagem values(16, 17, 'Charade', 500000);
+insert into Personagem values(16, 18, 'Betty', 7000000);
+insert into Personagem values(16, 19, 'Bruce', 8000000);
+insert into Personagem values(17, 14, 'Bobby', 400000);
+insert into Personagem values(17, 15, 'Bill', 6000000);
+insert into Personagem values(18, 17, 'Mascara', 10000000);
+insert into Personagem values(18, 21, 'Sammy', 2000000);
+insert into Personagem values(19, 10, 'Molina', 2000000);
+insert into Personagem values(19, 5, 'Aranha', 80000);
+insert into Personagem values(2, 1, 'Sandy', 50000);
+insert into Personagem values(20, 11, 'George', 14000000);
+insert into Personagem values(20, 18, 'Mary', 5000000);
+insert into Personagem values(21, 17, 'Ace', 6000000);
+insert into Personagem values(21, 21, 'Lola', 1000000);
+insert into Personagem values(22, 8, 'Chaplin', 300000);
+insert into Personagem values(23, 11, 'Bruce', 10000000);
+insert into Personagem values(24, 1, 'Annie', 18000000);
+insert into Personagem values(25, 9, 'James', 14000000);
+insert into Personagem values(26, 15, 'Forrest', 20000000);
+insert into Personagem values(3, 2, 'John', 50000);
+insert into Personagem values(4, 3, 'Mary', 1000000);
+insert into Personagem values(4, 4, 'Tootsie', 2000000);
+insert into Personagem values(5, 10, 'Nacib', 2500000);
+insert into Personagem values(5, 5, 'Tieta', 50000);
+insert into Personagem values(6, 6, 'Robinson', 3000000);
+insert into Personagem values(7, 7, 'Suzy', 3000000);
+insert into Personagem values(7, 8, 'Bill', 5000000);
+insert into Personagem values(8, 3, 'Bette', 3000000);
+insert into Personagem values(9, 9, 'Blade', 10000000);
+
+
+select * from Personagem;
