@@ -1,0 +1,59 @@
+/*28/10/2024*/
+select * from Personagem;
+use aula;
+Alter table medico drop crm;
+select * from medico;
+
+alter table medico change cidade cidadeNasc varchar(20); /*altera coluna especifica da tabela*/
+
+desc medico; 
+/*Mostra a tabela*/
+
+alter table paciente change cidade cidadeNasc varchar(20);/*Mudar tudo*/
+alter table paciente modify cpf varchar(20); /*Mudar apenas o tipo*/
+desc paciente;
+
+truncate table paciente; 	/*não funcionou por ter uma tabela associada*/
+
+/*Delete e update estão relacionados aos dados da tabela, comando de atualização*/
+
+update medico set especialidade = "Neuro" where nomeMed = "Paulo";   /*Usado para mudar um dado especifico sem alterar a linha toda*/
+select * from medico;
+
+update medico set nomeMed = "Pedro" where nomeMed ="Paulo"; 
+select * from paciente;
+
+delete from consulta where codPac = 3;  /*Apagar primeiramente o cod dela na tabela filha*/
+delete from paciente where nomePac = "Erica"; /*Ai apaga ela da tabela originaria*/
+select * from consulta;
+
+create database Empresa;
+use Empresa;
+
+create table Departamento (
+cod_dpto int primary key,
+descricao varchar(100) not null
+);
+create table Funcionarios (
+cod_func int primary key,
+nome varchar(100) not null,
+endereco varchar(150),
+telefone varchar(15),
+cod_departamento int,
+foreign key(cod_departamento) references Departamento(cod_dpto)
+);
+create table Dependentes (
+cod_dependente int primary key, 
+cod_funcionarios int,
+nome varchar(100) not null,
+data_nasc date,
+foreign key(cod_funcionarios) references Funcionarios(cod_func)
+);
+
+alter table Funcionarios add column data_nasc date;
+alter table Departamento modify column descricao char(50);
+alter table Dependentes add column teste varchar(100);
+alter table Dependentes drop column teste;
+
+desc Funcionarios;
+desc Dependentes;
