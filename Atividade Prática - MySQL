@@ -1,0 +1,55 @@
+create database Biblioteca;
+show databases;
+use Biblioteca;
+
+create table Autores(
+	idAutor int primary key,
+    nomeAutor varchar(50),
+    nacionalidade varchar(50)
+);
+create table Categorias(
+	idCategoria int primary key,
+    descricao varchar(50)
+);
+
+
+create table Livros(
+	id int primary key,
+	titulo varchar(100),
+    anoPublicacao year,
+    idAutor int,
+    idCategoria int,
+    foreign key (idAutor) references Autores(idAutor),
+    foreign key (idCategoria) references Categorias(idCategoria)
+);
+
+alter table Livros add preco decimal;
+alter table Categorias add quantidade int;
+
+-- Inserindo registros na tabela Autores
+INSERT INTO Autores (idAutor, nomeAutor, nacionalidade) VALUES
+(1, 'Jorge Amado', 'Brasileiro'),
+(2, 'Gabriel Garcia Marquez', 'Colombiano'),
+(3, 'Jane Austen', 'Britânica');
+select * from Autores; 
+-- Inserindo registros na tabela Categorias
+INSERT INTO Categorias (idCategoria, descricao, quantidade) VALUES
+(1, 'Ficção', 15),
+(2, 'Romance', 10),
+(3, 'História', 8);
+select * from Categorias;
+-- Inserindo registros na tabela Livros
+INSERT INTO Livros (id, titulo, anoPublicacao, idAutor, idCategoria, preco) VALUES
+(1, 'Capitães da Areia', 1937, 1, 1, 29.99),
+(2, 'Cem Anos de Solidão', 1967, 2, 2, 35.50),
+(3, 'Orgulho e Preconceito', 1913, 3, 3, 19.90);
+select * from Livros;
+
+update Categorias set descricao = 'Romance' where idCategoria = 1;
+update Livros set preco = preco * 1.10 where anoPublicacao < 2000;
+update Autores set nomeAutor = 'Gabriel García Márquez'where nomeAutor = 'Gabriel Garcia Marquez';
+ 
+delete from Livros where anoPublicacao < 1950;
+delete from Categorias where quantidade <5;
+
+alter table Categorias drop column quantidade;
