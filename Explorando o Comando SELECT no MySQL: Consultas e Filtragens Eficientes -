@@ -1,0 +1,59 @@
+use cadastro;
+select * from cursos order by nome; /*Ordem alfabetica*/
+select * from gafanhotos;	
+select ano,nome,carga from cursos
+order by ano, nome; /*seleciona itens especificos da tabela e de coluna especifica tb*/
+
+
+select * from cursos where ano = '2016' order by nome; /*filtra os dados por linha*/
+
+select nome, descrição, ano from cursos where ano <= 2015 order by ano, nome;
+describe cursos;
+
+select nome, ano from cursos where ano between 2014 and 2016 order by ano desc, nome; /*parametro de mostragem definidpo entre dois paramentros, vai mostrar o que etra entre as duas linhas*/
+
+select nome, descrição, ano from cursos where ano in (2014,2016) order by ano; /*parametro de mostragem definido, vai mostrar apenas o que o comando indica*/
+
+select * from cursos where carga > 35 and totalaulas < 30 order by nome; /*dois parametros de mostragem, apenas se tiver um e OUTRO*/
+
+describe cursos;
+
+alter table cursos rename column descrição to descricao; /*mudar nome da coluna*/
+
+select * from cursos where nome = 'PHP';
+select * from cursos where nome like 'P%';
+select * from cursos where nome like 'A%';
+select * from cursos where nome like '%A%';
+select * from cursos where nome like 'PH%P';
+select * from cursos where nome like 'PH%P_';
+select * from cursos;
+
+select * from gafanhotos;
+select nacionalidade from gafanhotos;
+select distinct nacionalidade from gafanhotos;
+select distinct carga from cursos order by carga;
+describe cursos;
+select count(*) from cursos where carga < 40;
+
+select nome, max(totalaulas) from cursos where ano = '2016';
+select nome, min(totalaulas) from cursos where ano = '2016';
+select * from cursos;
+
+-- SET SESSION sql_mode = (SELECT REPLACE(@@SESSION.sql_mode, 'ONLY_FULL_GROUP_BY', ''));
+
+SET GLOBAL sql_mode = (SELECT REPLACE(@@GLOBAL.sql_mode, 'ONLY_FULL_GROUP_BY', ''));
+
+describe gafanhotos;
+
+INSERT INTO gafanhotos (nome, prof, nascimento, sexo, peso, altura, nacionalidade) VALUES
+('Ana Silva', 'Engenheira', '1990-03-25', 'F', 58.5, 1.65, 'Brasil'),
+('Mariana Costa', 'Professora', '1985-08-14', 'F', 63.0, 1.70, 'Brasil'),
+('Carla Sousa', 'Médica', '1992-11-05', 'F', 60.2, 1.68, 'Brasil'),
+('Beatriz Rocha', 'Advogada', '1988-02-22', 'F', 59.8, 1.72, 'Brasil'),
+('Fernanda Lima', 'Designer', '1995-07-17', 'F', 55.3, 1.63, 'Brasil');
+
+select * from gafanhotos where sexo = 'f';
+
+select * from gafanhotos where nascimento between '1984-01-01' and '1999-12-31'; 
+
+
