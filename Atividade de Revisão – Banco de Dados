@@ -1,0 +1,101 @@
+create database Empresa;
+use Empresa;	
+
+create table Funcionarios( 
+	CodigoFuncionario int primary key,
+    PrimeiroNome char(10) not null,
+    SegundoNome char(10) not null,
+    UltimoNome char(10) not null,
+    CPF int not null,
+    RG int not null,
+    Endereco varchar(50),
+    CEP int,
+    Cidade char(15),
+    Fone varchar(15),
+    CodigoDepartamento int,
+    Funcao char(15),
+    Salario int
+);
+create table Departamentos(
+	CodigoDepartamento int,
+    NomeDEpartamento char(15),
+    Localizacao char(50),
+    CodigoFuncionarioGerente int
+);
+ALTER TABLE Funcionarios MODIFY Fone VARCHAR(15);
+
+INSERT INTO Funcionarios (CodigoFuncionario, PrimeiroNome, SegundoNome, UltimoNome, CPF, RG, Endereco, CEP, Cidade, Fone, CodigoDepartamento, Funcao, Salario)
+VALUES
+(1, 'Joao', 'Silva', 'Santos', 111111111, 12345678, 'Rua A, 100', 80000000, 'Curitiba', '4199999999', 1, 'Gerente', 10000),
+(2, 'Maria', 'Oliveira', 'Souza', 222222222, 87654321, 'Rua B, 200', 80000001, 'Curitiba', '4198888888', 2, 'Gerente', 9500),
+(3, 'Carlos', 'Pereira', 'Lima', 333333333, 23456789, 'Rua C, 300', 80000002, 'Curitiba', '4197777777', 3, 'Gerente', 10500),
+(4, 'Ana', 'Mendes', 'Barros', 444444444, 34567890, 'Rua D, 400', 80000003, 'Curitiba', '4196666666', 4, 'Gerente', 9000),
+(5, 'Pedro', 'Costa', 'Almeida', 555555555, 45678901, 'Rua E, 500', 80000004, 'Curitiba', '4195555555', 5, 'Gerente', 9500),
+(6, 'Julia', 'Nunes', 'Ferreira', 666666666, 56789012, 'Rua F, 600', 80000005, 'Curitiba', '4194444444', 1, 'Assistente', 4000),
+(7, 'Lucas', 'Ribeiro', 'Araujo', 777777777, 67890123, 'Rua G, 700', 80000006, 'Curitiba', '4193333333', 2, 'Analista', 4500),
+(8, 'Fernanda', 'Martins', 'Rocha', 888888888, 78901234, 'Rua H, 800', 80000007, 'Curitiba', '4192222222', 3, 'Analista', 4700),
+(9, 'Gabriel', 'Alves', 'Silva', 999999999, 89012345, 'Rua I, 900', 80000008, 'Curitiba', '4191111111', 4, 'Vendedor', 3200),
+(10, 'Beatriz', 'Lima', 'Nascimento', 101010101, 90123456, 'Rua J, 1000', 80000009, 'Curitiba', '4190000000', 5, 'Vendedor', 3300),
+(11, 'Ricardo', 'Moreira', 'Gomes', 121212121, 12345678, 'Rua K, 1100', 80000010, 'Curitiba', '4189999999', 1, 'Coordenador', 5000),
+(12, 'Patricia', 'Cardoso', 'Dias', 131313131, 23456789, 'Rua L, 1200', 80000011, 'Curitiba', '4188888888', 2, 'Supervisor', 4800),
+(13, 'Thiago', 'Sousa', 'Monteiro', 141414141, 34567890, 'Rua M, 1300', 80000012, 'Curitiba', '4187777777', 3, 'Desenvolvedor', 4700),
+(14, 'Vanessa', 'Fernandes', 'Reis', 151515151, 45678901, 'Rua N, 1400', 80000013, 'Curitiba', '4186666666', 4, 'Analista', 4200),
+(15, 'Diego', 'Vieira', 'Teixeira', 161616161, 56789012, 'Rua O, 1500', 80000014, 'Curitiba', '4185555555', 5, 'Analista', 4300);
+
+INSERT INTO Departamentos (CodigoDepartamento, NomeDEpartamento, Localizacao, CodigoFuncionarioGerente)
+VALUES
+(1, 'RecursosHum', 'Sede A', 1),
+(2, 'Financeiro', 'Sede B', 2),
+(3, 'TI', 'Sede C', 3),
+(4, 'Marketing', 'Sede D', 4),
+(5, 'Vendas', 'Sede E', 5);
+
+select PrimeiroNome,UltimoNome from Funcionarios order by UltimoNome; /* letra a */
+select * from Funcionarios order by Cidade; /*b*/
+select * from Funcionarios where Salario > 1000 order by PrimeiroNome, SegundoNome, UltimoNome; /*c*/
+
+/*esqueci da data de nascimento :/ */
+
+alter table Funcionarios add DataNascimento date;
+
+UPDATE Funcionarios
+SET DataNascimento = '1985-03-15' WHERE CodigoFuncionario = 1;
+UPDATE Funcionarios
+SET DataNascimento = '1990-07-22' WHERE CodigoFuncionario = 2;
+UPDATE Funcionarios
+SET DataNascimento = '1983-11-30' WHERE CodigoFuncionario = 3;
+UPDATE Funcionarios
+SET DataNascimento = '1995-04-12' WHERE CodigoFuncionario = 4;
+UPDATE Funcionarios
+SET DataNascimento = '1987-09-25' WHERE CodigoFuncionario = 5;
+UPDATE Funcionarios
+SET DataNascimento = '1992-06-18' WHERE CodigoFuncionario = 6;
+UPDATE Funcionarios
+SET DataNascimento = '1994-10-05' WHERE CodigoFuncionario = 7;
+UPDATE Funcionarios
+SET DataNascimento = '1988-01-20' WHERE CodigoFuncionario = 8;
+UPDATE Funcionarios
+SET DataNascimento = '1996-12-11' WHERE CodigoFuncionario = 9;
+UPDATE Funcionarios
+SET DataNascimento = '1993-05-09' WHERE CodigoFuncionario = 10;
+UPDATE Funcionarios
+SET DataNascimento = '1984-02-28' WHERE CodigoFuncionario = 11;
+UPDATE Funcionarios
+SET DataNascimento = '1991-08-15' WHERE CodigoFuncionario = 12;
+UPDATE Funcionarios
+SET DataNascimento = '1993-03-03' WHERE CodigoFuncionario = 13;
+UPDATE Funcionarios
+SET DataNascimento = '1989-09-17' WHERE CodigoFuncionario = 14;
+UPDATE Funcionarios
+SET DataNascimento = '1995-07-21' WHERE CodigoFuncionario = 15;
+
+select DataNascimento, PrimeiroNome from Funcionarios order by DataNascimento; /*nao finalizada*/
+
+
+
+
+
+
+
+
+
