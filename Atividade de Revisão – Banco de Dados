@@ -4,7 +4,7 @@ use Empresa;
 create table Funcionarios( 
 	CodigoFuncionario int primary key,
     PrimeiroNome char(10) not null,
-    SegundoNome char(10) not null,
+    SegundoNome char(10),
     UltimoNome char(10) not null,
     CPF int not null,
     RG int not null,
@@ -89,7 +89,60 @@ SET DataNascimento = '1989-09-17' WHERE CodigoFuncionario = 14;
 UPDATE Funcionarios
 SET DataNascimento = '1995-07-21' WHERE CodigoFuncionario = 15;
 
-select DataNascimento, PrimeiroNome from Funcionarios order by DataNascimento; /*nao finalizada*/
+select DataNascimento, PrimeiroNome from Funcionarios order by DataNascimento desc; /* letra d */
+
+/*vou colocar gente sem segundo nome pq n tem natabela */
+INSERT INTO Funcionarios (CodigoFuncionario, PrimeiroNome, UltimoNome, CPF, RG, Endereco, CEP, Cidade, Fone, CodigoDepartamento, Funcao, Salario, DataNascimento) 
+VALUES
+(16, 'Luiz', 'Fonseca', 171717171, 67890124, 'Rua P, 1600', 80000015, 'Curitiba', '4184444444', 1, 'Assistente', 4100, '1994-01-15'),
+(17, 'Clara', 'Moreira', 181818181, 78901235, 'Rua Q, 1700', 80000016, 'Curitiba', '4183333333', 2, 'Analista', 4500, '1995-11-08'),
+(18, 'Marcos', 'Silveira', 191919191, 89012346, 'Rua R, 1800', 80000017, 'Curitiba', '4182222222', 3, 'Coordenador', 5200, '1993-02-28'),
+(19, 'Alice', 'Cardoso', 202020202, 90123457, 'Rua S, 1900', 80000018, 'Curitiba', '4181111111', 4, 'Desenvolvedor', 4700, '1996-06-14'),
+(20, 'Guilherme', 'Moraes', 212121212, 12345679, 'Rua T, 2000', 80000019, 'Curitiba', '4180000000', 5, 'Supervisor', 4800, '1992-10-03');
+
+select PrimeiroNome, UltimoNome from Funcionarios where SegundoNome IS NULL; /*letra o (não tenho ideia do pq eu sai da ordem do nada)*/
+
+select  Fone, PrimeiroNome, CodigoFuncionario from Funcionarios order by CodigoFuncionario, PrimeiroNome; /* e */
+
+select SUM(Salario) as TotalFolhaPagamento from Funcionarios; /* f */
+
+select PrimeiroNome, NomeDEpartamento, Funcao from Funcionarios, Departamentos where Funcionarios.CodigoDepartamento = Departamentos.CodigoDepartamento; /* g */
+
+select NomeDepartamento, PrimeiroNome, CodigoFuncionarioGerente from Departamentos, Funcionarios; 
+
+select NomeDEpartamento, PrimeiroNome from Departamentos, Funcionarios where Departamentos.CodigoFuncionarioGerente = Funcionarios.CodigoFuncionario; /* H */
+
+select NomeDEpartamento, (select SUM(Salario) from Funcionarios where CodigoDepartamento = Departamentos.CodigoDepartamento) as TotalFolha from Departamentos;/* I */
+
+select PrimeiroNome, UltimoNome, NomeDEpartamento from Funcionarios, Departamentos where Funcao = 'Supervisor' AND Funcionarios.CodigoDepartamento = Departamentos.CodigoDepartamento; /*J*/
+select COUNT(*) from Funcionarios; /*k*/
+
+select AVG(Salario) from Funcionarios; /* L */
+
+INSERT INTO Funcionarios (CodigoFuncionario, PrimeiroNome, SegundoNome, UltimoNome, CPF, RG, Endereco, CEP, Cidade, Fone, CodigoDepartamento, Funcao, Salario, DataNascimento)
+VALUES
+(21, 'Carlos', 'Almeida', 'Souza', 222222222, 12345678, 'Rua X, 1100', 80000011, 'Recife', '4199999999', 1, 'Telefonista', 2800, '1992-01-15'),
+(22, 'Fernanda', 'Pereira', 'Lima', 233333333, 23456789, 'Rua Y, 1200', 80000012, 'Recife', '4198888888', 2, 'Telefonista', 3000, '1994-03-20'),
+(23, 'Lucas', 'Mendes', 'Costa', 244444444, 34567890, 'Rua Z, 1300', 80000013, 'Recife', '4197777777', 3, 'Telefonista', 3100, '1991-05-05'),
+(24, 'Roberta', 'Martins', 'Silva', 255555555, 45678901, 'Rua W, 1400', 80000014, 'Recife', '4196666666', 4, 'Telefonista', 3200, '1993-07-25'),
+(25, 'Gustavo', 'Costa', 'Oliveira', 266666666, 56789012, 'Rua V, 1500', 80000015, 'Recife', '4195555555', 5, 'Telefonista', 3300, '1990-09-30');
+
+
+select PrimeiroNome, UltimoNome from Funcionarios where Cidade = 'Recife' and Funcao = 'Telefonista'; /*M*/
+
+select NomeDEpartamento, PrimeiroNome from Departamentos, Funcionarios where Departamentos.CodigoDepartamento = Funcionarios.CodigoDepartamento order by NomeDEpartamento, PrimeiroNome; /*N*/
+
+select NomeDEpartamento, Salario from Departamentos, Funcionarios where Departamentos.CodigoDepartamento = Funcionarios.CodigoDepartamento and Salario = (SELECT MIN(Salario) FROM Funcionarios WHERE CodigoDepartamento = Departamentos.CodigoDepartamento) /*P*/
+
+
+
+
+
+
+
+
+
+
 
 
 
